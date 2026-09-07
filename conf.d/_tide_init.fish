@@ -5,7 +5,7 @@ function _tide_init_install --on-event _tide_init_install
     _load_config lean
     _tide_finish
 
-    if status is-interactive && isatty
+    if status is-interactive && isatty && not set -q tide_skip_configure
         tide bug-report --check || sleep 4
 
         if contains ilancosman/tide (string lower $_fisher_plugins)
